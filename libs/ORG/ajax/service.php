@@ -1,37 +1,21 @@
 <?php
 	header("Content-type:text/plain;charset=utf8");
+	//实现数据库数据查询
+	//首先先引入数据库工工厂类
+	//其次引入mysqliDb
+	
+	require_once('../../../framework/libs/core/DB.class.php');
+	require_once('../../../framework/libs/db/mysqliDb.class.php');
+	require_once('../../../config.php');
+	//echo返回最近的温度值
 
-	//返回最近的温度值
-	getTemperature();
-
-	function getTemperature(){
-		
-		if($con = mysqli_connect('localhost','root',''))
-		{
-			//echo "连接成功";
-		}else{
-			echo "连接失败";
-		}
-		
-		if(mysqli_select_db($con,'tempdata'))
-		{
-			//echo "数据库连接成功";
-		}
-		else
-		{
-			echo "数据库连接失败";
-		}
-		$sql_str='SELECT * FROM temperature ORDER BY id DESC';
-		
-		if($res=mysqli_query($con,$sql_str))
-		{
-			//echo "读取成功";
-		}else{
-			echo "读取失败";
-		}
-		$data = mysqli_fetch_assoc($res);
-		mysqli_close($con); 
-		
-		echo $data['temperature'];
+	
+	getTemperature($config);
+	
+	function getTemperature($tempconfig){
+		DB::init('mysqliDb',$tempconfig['dbconfig']);
+		$result = DB::$db->query("SELECT * FROM temperature");
+		$data = DB::$db->findAll($result);
+		echo $data['0']['temperature'];
 	}
 ?>
