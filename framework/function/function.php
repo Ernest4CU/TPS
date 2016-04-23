@@ -1,5 +1,5 @@
 <?php
-	function C($name,$method,$params=''){//第一个是控制器的名字，第二个是方法
+	function C($name,$method){//第一个是控制器的名字，第二个是方法
 		/*
 		1.先引入文件
 		2.实例化
@@ -9,8 +9,7 @@
 		//$testController = new testController();
 		//$testController->show();	
 		//die($params);
-		$str = empty($params)?'':$params;
-		eval('$obj = new '.$name.'Controller();$obj->'.$method.'('.$str.');');
+		eval('$obj = new '.$name.'Controller();$obj->'.$method.'();');
 		//eval是php中将字符串转换为可执行的php语句
 		/*
 		eval()函数调用简单但是不安全

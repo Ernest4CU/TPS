@@ -31,8 +31,9 @@
 			self::init_db();//数据库初始化
 			self::init_view();//视图引擎初始化
 			self::init_controllor();//控制器初始化
-			self::init_method();//方法初始化					
-			C(self::$controller, self::$method,$_GET['temperature']);//启动引擎
+			self::init_method();//方法初始化
+			
+			C(self::$controller, self::$method);//启动引擎
 		}
 	}
 ?>
