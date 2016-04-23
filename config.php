@@ -16,11 +16,13 @@ $config = array(
 	),
 	'controllerAllow'=>array(
 		'index',
-		'save'
+		'save',
+		'ajax'
 	),
 	'methodAllow'=>array(
 		'index',
-		'savetemperature'
+		'savetemperature',
+		'gettemperature'
 	)
 );
 ?>

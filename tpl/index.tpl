@@ -19,7 +19,7 @@
 	timeId = setInterval("getTemperature();",5000);
 	function getTemperature(){
 		var request =new XMLHttpRequest();
-		request.open("GET","libs/ORG/ajax/service.php");
+		request.open("GET","?controller=ajax&method=gettemperature");
 		request.send();
 		request.onreadystatechange=function(){
 			if(request.readyState === 4&&request.status === 200){
