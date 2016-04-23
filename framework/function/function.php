@@ -1,0 +1,66 @@
+<?php
+	function C($name,$method,$params=''){//第一个是控制器的名字，第二个是方法
+		/*
+		1.先引入文件
+		2.实例化
+		3.调用方法
+		*/
+		require_once('/libs/Controller/'.$name.'Controller.class.php');
+		//$testController = new testController();
+		//$testController->show();	
+		//die($params);
+		$str = empty($params)?'':$params;
+		eval('$obj = new '.$name.'Controller();$obj->'.$method.'('.$str.');');
+		//eval是php中将字符串转换为可执行的php语句
+		/*
+		eval()函数调用简单但是不安全
+		eval('$obj = new '.$name.'Controller();$testController->'.$method.'();')；
+		可用下面代码代替：*/
+		/*
+		$controller=$name.'controller';//因为变量可达到将变量中的字符串直接参与PHP编译
+		$obj=new $controller();//??字符串可用来直接声明对象？
+		$obj->$method();
+		*/
+	}
+	
+	function M($name){
+		require_once('/libs/Model/'.$name.'Model.class.php');
+		eval('$obj = new '.$name.'Model();');
+		return $obj;
+		//eval是php中将字符串转换为可执行的php语句
+		/*
+		eval()函数调用简单但是不安全
+		eval('$obj = new '.$name.'Controller();$testController->'.$method.'();')；
+		可用下面代码代替：*/
+		/*
+		$Model = $name.'Model';
+		$obj=new $Model();
+		*/
+	}
+	
+	function V($name){
+		require_once('/libs/View/'.$name.'View.class.php');
+		eval('$obj = new '.$name.'View();');
+		return $obj;
+		/*
+		$View = $name.'View';
+		$obj = new $View();
+		return $obj;
+		*/		
+	}
+	
+	function daddslashes($str){
+		return (!get_magic_quotes_gpc())?addslashes($str):$str;
+	}
+	
+	function ORG($path,$name,$params=array()){//path是路径，name是第三方类名 params是该类初始化的时候需要指定、赋值的属性，格式为 array(属性名=>属性值,属性名2=>属性值2······)
+		require_once('libs/ORG/'.$path.$name.'.class.php');
+		$obj = new $name();
+		if(!empty($params)){
+			foreach($params as $key =>$value){
+				$obj->$key = $value;
+			}
+		}
+		return $obj;
+	}
+?>
