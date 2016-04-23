@@ -5,8 +5,6 @@
 		include_once($currentdir.'/'.$path);
 	}
 	class PC{
-		public static $controllerAllow=array('index','save');
-		public static $methodAllow=array('index','savetemperature');
 		public static $controller;
 		public static $method;
 		private static $config;
@@ -17,13 +15,12 @@
 			VIEW::init('Smarty', self::$config['viewconfig']);
 		}
 		private static function init_controllor(){
-			
 			self::$controller = isset($_GET['controller'])?daddslashes($_GET['controller']):'index';
-			self::$controller = in_array(self::$controller,self::$controllerAllow)?self::$controller:'index';				
+			self::$controller = in_array(self::$controller,self::$config['controllerAllow'])?self::$controller:'index';				
 		}
 		private static function init_method(){
 			self::$method = isset($_GET['method'])?daddslashes($_GET['method']):'index';
-			self::$method = in_array(self::$method,self::$methodAllow)?self::$method:'index';	
+			self::$method = in_array(self::$method,self::$config['methodAllow'])?self::$method:'index';	
 		}
 		public static function run($config){
 			

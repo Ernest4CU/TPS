@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html;charset=utf8">
 <title>Demo</title>
 <style>
@@ -13,15 +14,15 @@
 </head>
 <body>
 <h1>温度实时显示</h1>
-<p style="font-size:50px">温度值为：<span id="showTemperature"></span>℃</p>
+<p style="font-size:50px">温度值为：<span id="showTemperature">{$str}</span>℃</p>
 <script>
-	timeId = setInterval("getTemperature();",500);
+	timeId = setInterval("getTemperature();",5000);
 	function getTemperature(){
 		var request =new XMLHttpRequest();
 		request.open("GET","libs/ORG/ajax/service.php");
 		request.send();
 		request.onreadystatechange=function(){
-			if(request.readyState === 4&&request.status === 500){
+			if(request.readyState === 4&&request.status === 200){
 			//做一些事情 request.responseText
 			
 				document.getElementById("showTemperature").innerHTML=request.responseText;

@@ -13,6 +13,14 @@ $config = array(
 		'dbpsw' => '',
 		'dbname' => 'tempdata',
 		'dbcharset' => 'utf8'
+	),
+	'controllerAllow'=>array(
+		'index',
+		'save'
+	),
+	'methodAllow'=>array(
+		'index',
+		'savetemperature'
 	)
 );
 ?>

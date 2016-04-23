@@ -6,7 +6,7 @@
 		function index(){
 			//创建一个模型用来读取数据
 			$model = M('index');
-			$data = $model->get();
+			$data = $model->get();			
 			$view = V('index');
 			$view->show($data);			
 		}

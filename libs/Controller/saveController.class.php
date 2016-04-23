@@ -1,5 +1,8 @@
 <?php
 	class saveController{
+		function index(){
+			return "";
+		}
 		//存储控制器
 		//savetemperature方法用来存储温度
 		function savetemperature(){
