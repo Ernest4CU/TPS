@@ -18,6 +18,7 @@
 	timeId = setInterval("getTemperature();",5000);
 	function getTemperature(){
 		var request =new XMLHttpRequest();
+		//request.open("GET","?controller=ajax&method=gettemperature&time="+new Date().getTime());
 		request.open("GET","?controller=ajax&method=gettemperature");
 		//request.open("GET","libs/ORG/ajax/service.php");
 		request.send();
@@ -29,21 +30,6 @@
 			}
 		}
 	}
-	//timeId = setInterval("alert('ok');",500);
-	/*
-	document.getElementById("fresh").onclick=function(){
-		//发送Ajax查询请求并处理
-		var request =new XMLHttpRequest();
-		request.open("GET","service.php");
-		request.send();
-		request.onreadystatechange=function(){
-			if(request.readyState === 4&&request.status === 200){
-			//做一些事情 request.responseText
-			
-				document.getElementById("showTemperature").innerHTML=request.responseText;
-			}
-		}
-	}*/
 </script>
 </body>
 </html>

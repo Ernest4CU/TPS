@@ -16,6 +16,9 @@
 		DB::init('mysqliDb',$tempconfig['dbconfig']);
 		$result = DB::$db->query("SELECT * FROM temperature");
 		$data = DB::$db->findAll($result);
+		header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
+		header("Pragma: no-cache"); // HTTP 1.0.
+		header("Expires: 0"); // Proxies.
 		echo $data['0']['temperature'];
 	}
 ?>
