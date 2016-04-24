@@ -34,28 +34,6 @@
 			});
 		}
 	timeId = setInterval("getTemperature();",5000);
-/*		$(document).ready(function(){
-		timeId = setInterval("getTemperature();",5000);
-	});
-timeId = setInterval("getTemperature();",5000);
-	function getTemperature(){
-		var request =new XMLHttpRequest();
-		//request.open("GET","?controller=ajax&method=gettemperature&time="+new Date().getTime());
-		request.open("GET","?controller=ajax&method=gettemperature");
-		//request.open("GET","libs/ORG/ajax/service.php");
-		request.send();
-		request.onreadystatechange=function(){
-			if(request.readyState === 4&&request.status === 200){
-			//做一些事情 request.responseText
-				var data = JSON.parse(request.responseText);
-				if(data.success){
-					document.getElementById("showTemperature").innerHTML=data.temperature;
-				}else{
-					document.getElementById("showTemperature").innerHTML="出现错误："+data.msg;
-				}
-			}
-		}
-	}*/
 </script>
 </body>
 </html>
