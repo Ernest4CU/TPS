@@ -25,8 +25,12 @@
 		request.onreadystatechange=function(){
 			if(request.readyState === 4&&request.status === 200){
 			//做一些事情 request.responseText
-			
-				document.getElementById("showTemperature").innerHTML=request.responseText;
+				var data = JSON.parse(request.responseText);
+				if(data.success){
+					document.getElementById("showTemperature").innerHTML=data.temperature;
+				}else{
+					document.getElementById("showTemperature").innerHTML="出现错误："+data.msg;
+				}
 			}
 		}
 	}
