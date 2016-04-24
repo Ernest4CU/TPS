@@ -14,7 +14,10 @@
 <body>
 <h1>温度实时显示</h1>
 <p style="font-size:50px">温度值为：<span id="showTemperature">{$str}</span>℃</p>
+<script src="libs/ORG/jQuery/jquery-2.2.3.js"></script>
+<!--
 <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+-->
 <script>
 	function getTemperature(){
 			$.ajax({
